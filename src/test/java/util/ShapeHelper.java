@@ -8,7 +8,7 @@ import java.util.*;
 import static util.StringHelper.splitString;
 
 public class ShapeHelper {
-    public static List<RectangularCuboid> inputToCuboidShapeList(List<String> inputList, String splitter) {
+    public static List<RectangularCuboid> transformInputToCuboidShapeList(List<String> inputList, String splitter) {
         List<RectangularCuboid> rectangularCuboidList = new ArrayList<>();
         for (String input : inputList) {
             RectangularCuboid rectangularCuboid = new RectangularCuboid();
@@ -45,5 +45,21 @@ public class ShapeHelper {
             rectangularCuboidSurfaceList.add(rectangularCuboidSurface);
         }
         return rectangularCuboidSurfaceList;
+    }
+
+    public static List<BigDecimal> calculateRectangularCuboidShortestDistanceAroundSides(List<RectangularCuboid> rectangularCuboidList) {
+        List<BigDecimal> shortestDistanceAroundSides = new ArrayList<>();
+        for (RectangularCuboid rectangularCuboid : rectangularCuboidList) {
+            shortestDistanceAroundSides.add(rectangularCuboid.getShortestDistanceAroundSides());
+        }
+        return shortestDistanceAroundSides;
+    }
+
+    public static List<BigDecimal> calculateBows(List<RectangularCuboid> rectangularCuboidList) {
+        List<BigDecimal> bows = new ArrayList<>();
+        for (RectangularCuboid rectangularCuboid : rectangularCuboidList) {
+            bows.add(rectangularCuboid.getDimensionsMultiplied());
+        }
+        return bows;
     }
 }

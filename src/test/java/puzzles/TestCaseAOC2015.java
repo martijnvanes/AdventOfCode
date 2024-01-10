@@ -37,11 +37,22 @@ public class TestCaseAOC2015 {
     public void dayTwoPuzzleOne() {
         List<String> input = FileHelper.readFileToListOfString("2015-day02.txt");
         assert input != null;
-        List<RectangularCuboid> rectangularCuboidList = inputToCuboidShapeList(input, "x");
+        List<RectangularCuboid> rectangularCuboidList = transformInputToCuboidShapeList(input, "x");
         Map<Integer, List<BigDecimal>> surfacesMap = calculateRectangularCuboidSurfaces(rectangularCuboidList);
         List<BigDecimal> rectangularCuboidSurfaceList = calculateRectangularCuboidCompleteSurfaceAddSmallestSurface(surfacesMap);
         BigDecimal answer = sumOfBigDecimalInList(rectangularCuboidSurfaceList);
 
         System.out.println("The answer to the advent of code 2015 challenge day two puzzle one is: " + answer);
+    }
+
+    @Test
+    public void dayTwoPuzzleTwo() {
+        List<String> input = FileHelper.readFileToListOfString("2015-day02.txt");
+        assert input != null;
+        List<RectangularCuboid> rectangularCuboidList = transformInputToCuboidShapeList(input, "x");
+        List<BigDecimal> shortestDistanceAroundSides = calculateRectangularCuboidShortestDistanceAroundSides(rectangularCuboidList);
+        List<BigDecimal> bows = calculateBows(rectangularCuboidList);
+        BigDecimal answer = sumOfBigDecimalInList(shortestDistanceAroundSides).add(sumOfBigDecimalInList(bows));
+        System.out.println("The answer to the advent of code 2015 challenge day two puzzle two is: " + answer);
     }
 }
