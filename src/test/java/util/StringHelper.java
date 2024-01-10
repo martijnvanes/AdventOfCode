@@ -31,4 +31,8 @@ public class StringHelper {
         }
         return i;
     }
+
+    public static String[] splitString(String inputString, String splitter) {
+        return inputString.split(splitter);
+    }
 }
