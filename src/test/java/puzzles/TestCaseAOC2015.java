@@ -2,6 +2,7 @@ package puzzles;
 
 import models.shapes.RectangularCuboid;
 import org.junit.jupiter.api.Test;
+import util.CoordinateHelper;
 import util.FileHelper;
 
 import java.math.BigDecimal;
@@ -54,5 +55,11 @@ public class TestCaseAOC2015 {
         List<BigDecimal> bows = calculateBows(rectangularCuboidList);
         BigDecimal answer = sumOfBigDecimalInList(shortestDistanceAroundSides).add(sumOfBigDecimalInList(bows));
         System.out.println("The answer to the advent of code 2015 challenge day two puzzle two is: " + answer);
+    }
+
+    @Test
+    public void dayThreePuzzleOne() {
+        String input = FileHelper.readFileToString("2015-day03.txt");
+        List<String> coordinateList = CoordinateHelper.returnCoordinatesList(input, 0, 0);
     }
 }
