@@ -4,8 +4,10 @@ import models.shapes.RectangularCuboid;
 import org.junit.jupiter.api.Test;
 import util.CoordinateHelper;
 import util.FileHelper;
+import util.ListHelper;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -61,5 +63,8 @@ public class TestCaseAOC2015 {
     public void dayThreePuzzleOne() {
         String input = FileHelper.readFileToString("2015-day03.txt");
         List<String> coordinateList = CoordinateHelper.returnCoordinatesList(input, 0, 0);
+        HashSet<String> coordinateListNoDuplicates = ListHelper.uniqueList(coordinateList);
+        int answer = coordinateListNoDuplicates.size();
+        System.out.println("The answer to the advent of code 2015 challenge day three puzzle one is: " + answer);
     }
 }

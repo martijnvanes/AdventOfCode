@@ -1,6 +1,5 @@
 package util;
 
-import java.lang.runtime.SwitchBootstraps;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +8,7 @@ public class CoordinateHelper {
         String[] movementArray = StringHelper.splitString(movementString, "");
 
         List<String> coordinatesList = new ArrayList<>();
-        coordinatesList.add("X" + String.valueOf(xPosition) + "Y" + String.valueOf(yPosition));
+        coordinatesList.add("X" + xPosition + "Y" + yPosition);
 
         for (String movement : movementArray) {
             switch(movement) {
@@ -17,8 +16,8 @@ public class CoordinateHelper {
                 case "v" -> xPosition--;
                 case "<" -> yPosition--;
                 case ">" -> yPosition++;
-                coordinatesList.add("X" + String.valueOf(xPosition) + "Y" + String.valueOf(yPosition));
             }
+            coordinatesList.add("X" + xPosition + "Y" + yPosition);
         }
         return coordinatesList;
     }
