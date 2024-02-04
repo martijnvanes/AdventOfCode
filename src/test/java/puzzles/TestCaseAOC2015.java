@@ -8,6 +8,7 @@ import util.ListHelper;
 import util.StringHelper;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -73,9 +74,17 @@ public class TestCaseAOC2015 {
     public void dayThreePuzzleTwo() {
         String input = FileHelper.readFileToString("2015-day03.txt");
         assert input != null;
+        List<String> coordinateList = new ArrayList<>();
+
         String santa = StringHelper.returnPartOfStringBasedOnIndex(input, 0,2);
         String roboSanta = StringHelper.returnPartOfStringBasedOnIndex(input, 1, 2);
 
-
+        List<String> coordinateListSanta = CoordinateHelper.returnCoordinatesList(santa, 0, 0);
+        List<String> coordinateListRoboSanta = CoordinateHelper.returnCoordinatesList(roboSanta, 0, 0);
+        coordinateList.addAll(coordinateListSanta);
+        coordinateList.addAll(coordinateListRoboSanta);
+        HashSet<String> coordinateListNoDuplicates = ListHelper.uniqueList(coordinateList);
+        int answer = coordinateListNoDuplicates.size();
+        System.out.println("The answer to the advent of code 2015 challenge day three puzzle two is: " + answer);
     }
 }

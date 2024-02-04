@@ -37,7 +37,7 @@ public class StringHelper {
     }
 
     public static String returnPartOfStringBasedOnIndex(String inputString, int index, int increaseIndex) {
-        int length = inputString.length();
+        int length = inputString.length() - 1;
         StringBuilder outputString = new StringBuilder();
         for (int i = index; i <= length; i = i + increaseIndex) {
             outputString.append(inputString.charAt(i));
