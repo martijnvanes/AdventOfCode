@@ -1,5 +1,7 @@
 package util;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -10,5 +12,9 @@ public class Calculator {
             answer = answer.add(bigDecimal);
         }
         return answer;
+    }
+
+    public static String calculateMD5Hash(String inputString) {
+        return DigestUtils.md5Hex(inputString).toUpperCase();
     }
 }

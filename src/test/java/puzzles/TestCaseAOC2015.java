@@ -2,16 +2,10 @@ package puzzles;
 
 import models.shapes.RectangularCuboid;
 import org.junit.jupiter.api.Test;
-import util.CoordinateHelper;
-import util.FileHelper;
-import util.ListHelper;
-import util.StringHelper;
+import util.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static util.Calculator.sumOfBigDecimalInList;
 import static util.ShapeHelper.*;
@@ -76,7 +70,7 @@ public class TestCaseAOC2015 {
         assert input != null;
         List<String> coordinateList = new ArrayList<>();
 
-        String santa = StringHelper.returnPartOfStringBasedOnIndex(input, 0,2);
+        String santa = StringHelper.returnPartOfStringBasedOnIndex(input, 0, 2);
         String roboSanta = StringHelper.returnPartOfStringBasedOnIndex(input, 1, 2);
 
         List<String> coordinateListSanta = CoordinateHelper.returnCoordinatesList(santa, 0, 0);
@@ -86,5 +80,39 @@ public class TestCaseAOC2015 {
         HashSet<String> coordinateListNoDuplicates = ListHelper.uniqueList(coordinateList);
         int answer = coordinateListNoDuplicates.size();
         System.out.println("The answer to the advent of code 2015 challenge day three puzzle two is: " + answer);
+    }
+
+    @Test
+    public void dayFourPuzzleOneAndTwo() {
+        String input = "yzbqklnj";
+        int decimalNumber = 0;
+        String hash;
+
+        do {
+            decimalNumber++;
+            hash = Calculator.calculateMD5Hash(input + decimalNumber);
+        }
+        while (!hash.startsWith("000000"));
+
+        System.out.println(hash);
+        System.out.println("The answer to the advent of code 2015 challenge day four puzzle one is: " + decimalNumber);
+    }
+
+    @Test
+    public void dayFivePuzzleOne() {
+        List<String> inputList = FileHelper.readFileToListOfString("2015-day05.txt");
+        assert inputList != null;
+        List<String> forbiddenStringList = Arrays.asList("ab", "cd", "pq", "xy");
+
+        List<String> noForbiddenStringsList = new ArrayList<>();
+        List<String> hasThreeVowels = new ArrayList<>();
+
+        for (String forbiddenString : forbiddenStringList) {
+            noForbiddenStringsList = ListHelper.removeIfContainsForbidden(inputList, forbiddenString);
+        }
+        hasThreeVowels = ListHelper.removeIfDoesNotContainNVowels(noForbiddenStringsList, 3);
+        System.out.println(hasThreeVowels);
+
+
     }
 }
