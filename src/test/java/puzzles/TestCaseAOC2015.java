@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import util.CoordinateHelper;
 import util.FileHelper;
 import util.ListHelper;
+import util.StringHelper;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -66,5 +67,15 @@ public class TestCaseAOC2015 {
         HashSet<String> coordinateListNoDuplicates = ListHelper.uniqueList(coordinateList);
         int answer = coordinateListNoDuplicates.size();
         System.out.println("The answer to the advent of code 2015 challenge day three puzzle one is: " + answer);
+    }
+
+    @Test
+    public void dayThreePuzzleTwo() {
+        String input = FileHelper.readFileToString("2015-day03.txt");
+        assert input != null;
+        String santa = StringHelper.returnPartOfStringBasedOnIndex(input, 0,2);
+        String roboSanta = StringHelper.returnPartOfStringBasedOnIndex(input, 1, 2);
+
+
     }
 }

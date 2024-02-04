@@ -35,4 +35,13 @@ public class StringHelper {
     public static String[] splitString(String inputString, String splitter) {
         return inputString.split(splitter);
     }
+
+    public static String returnPartOfStringBasedOnIndex(String inputString, int index, int increaseIndex) {
+        int length = inputString.length();
+        StringBuilder outputString = new StringBuilder();
+        for (int i = index; i <= length; i = i + increaseIndex) {
+            outputString.append(inputString.charAt(i));
+        }
+        return outputString.toString();
+    }
 }
