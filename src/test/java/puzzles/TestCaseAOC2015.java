@@ -105,14 +105,13 @@ public class TestCaseAOC2015 {
         List<String> forbiddenStringList = Arrays.asList("ab", "cd", "pq", "xy");
 
         List<String> noForbiddenStringsList = new ArrayList<>();
-        List<String> hasThreeVowels = new ArrayList<>();
+        List<String> hasThreeVowels;
 
         for (String forbiddenString : forbiddenStringList) {
             noForbiddenStringsList = ListHelper.removeIfContainsForbidden(inputList, forbiddenString);
         }
         hasThreeVowels = ListHelper.removeIfDoesNotContainNVowels(noForbiddenStringsList, 3);
-        System.out.println(hasThreeVowels);
-
-
+        List<String> answer = StringHelper.letterAppearsTwiceInARow(hasThreeVowels);
+        System.out.println(answer.size());
     }
 }

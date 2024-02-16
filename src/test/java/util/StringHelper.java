@@ -2,6 +2,8 @@ package util;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -30,6 +32,17 @@ public class StringHelper {
             }
         }
         return i;
+    }
+
+    public static List<String> letterAppearsTwiceInARow(List<String> inputList) {
+        List<String> outputList = new ArrayList<>();
+        for (String string : inputList) {
+            boolean doubleLetter = string.contains("aa") || string.contains("bb") || string.contains("cc") || string.contains("dd") || string.contains("ee") || string.contains("ff") || string.contains("gg") || string.contains("hh") || string.contains("ii") || string.contains("jj") || string.contains("kk") || string.contains("ll") || string.contains("mm") || string.contains("nn") || string.contains("oo") || string.contains("pp") || string.contains("qq") || string.contains("rr") || string.contains("ss") || string.contains("tt") || string.contains("uu") || string.contains("vv") || string.contains("ww") || string.contains("xx") || string.contains("yy") || string.contains("zz");
+            if (doubleLetter) {
+                outputList.add(string);
+            }
+        }
+        return outputList;
     }
 
     public static String[] splitString(String inputString, String splitter) {
