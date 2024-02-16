@@ -114,4 +114,28 @@ public class TestCaseAOC2015 {
         List<String> answer = StringHelper.letterAppearsTwiceInARow(hasThreeVowels);
         System.out.println(answer.size());
     }
+
+    @Test
+    public void dayFivePuzzleTwo() {
+        List<String> inputList = FileHelper.readFileToListOfString("2015-day05.txt");
+        assert inputList != null;
+        List<String> niceStringsPhaseOne = new ArrayList<>();
+        List<String> niceStringsPhaseTwo = new ArrayList<>();
+
+        int numberOfLettersToMatch = 2;
+        for (String inputString : inputList) {
+            if (!StringHelper.setOfLettersUnique(numberOfLettersToMatch, inputString)) {
+                niceStringsPhaseOne.add(inputString);
+            }
+        }
+
+        int skipPositions = 1;
+        for (String inputString : niceStringsPhaseOne) {
+            if (StringHelper.determineStringHasRepeatingLetter(skipPositions, inputString)) {
+                niceStringsPhaseTwo.add(inputString);
+            }
+        }
+        System.out.println(niceStringsPhaseTwo);
+        System.out.println("The answer is: " + niceStringsPhaseTwo.size());
+    }
 }

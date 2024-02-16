@@ -1,6 +1,7 @@
 package util;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.maven.shared.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,10 @@ public class StringHelper {
             }
         }
         return count;
+    }
+
+    public static int countOccurrencesOfStringInString(String searchString, String inputString) {
+        return StringUtils.countMatches(inputString, searchString);
     }
 
     public static int findPositionForThreshold(char charUp, char charDown, String inputString, int threshold) {
@@ -56,5 +61,29 @@ public class StringHelper {
             outputString.append(inputString.charAt(i));
         }
         return outputString.toString();
+    }
+
+    public static boolean setOfLettersUnique(int sizeOfSet, String inputString) {
+        int stringLength = inputString.length();
+        for (int i = 0; i <= stringLength - sizeOfSet; i++) {
+            String searchString = inputString.substring(i, i + sizeOfSet);
+            if (countOccurrencesOfStringInString(searchString, inputString) > 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean determineStringHasRepeatingLetter(int skipPositions, String inputString) {
+        int stringLength = inputString.length();
+        for (int i = 0; i < stringLength - skipPositions - 1; i++) {
+            String[] array = splitString(inputString, "");
+            String A = array[i];
+            String B = array[i + +1 + skipPositions];
+            if (A.equals(B)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
