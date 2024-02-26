@@ -1,5 +1,6 @@
 package puzzles;
 
+import models.arrayInstruction.TwoDimensionalInstruction;
 import models.shapes.RectangularCuboid;
 import org.junit.jupiter.api.Test;
 import util.*;
@@ -137,5 +138,18 @@ public class TestCaseAOC2015 {
         }
         System.out.println(niceStringsPhaseTwo);
         System.out.println("The answer is: " + niceStringsPhaseTwo.size());
+    }
+
+    @Test
+    public void daySixPuzzleOne() {
+        List<String> inputList = FileHelper.readFileToListOfString("2015-day06.txt");
+        int[][] arrayOfLights = ArrayHelper.createTwoDimensionalArray(1000, 1000, 0);
+
+
+        for (String inputString : inputList) {
+            TwoDimensionalInstruction twoDimensionalInstruction = new TwoDimensionalInstruction();
+            String[] parts = StringHelper.splitString(inputString, " ");
+        }
+
     }
 }
