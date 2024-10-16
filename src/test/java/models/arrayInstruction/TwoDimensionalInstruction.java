@@ -20,4 +20,7 @@ public class TwoDimensionalInstruction {
         endX = Integer.parseInt(pos[0]);
         endY = Integer.parseInt(pos[1]);
     }
+    void determinePosition() {
+
+    }
 }

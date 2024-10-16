@@ -17,7 +17,7 @@ public class TestCaseAOC2015 {
     @Test
     public void dayOnePuzzleOne() {
         int answer;
-        String input = FileHelper.readFileToString("2015-day01.txt");
+        String input = FileHelper.readFileToString("2015/2015-day01.txt");
 
         int countUp = countOccurrencesOfCharacterInString('(', input);
         int countDown = countOccurrencesOfCharacterInString(')', input);
@@ -28,14 +28,14 @@ public class TestCaseAOC2015 {
     @Test
     public void dayOnePuzzleTwo() {
         int answer;
-        String input = FileHelper.readFileToString("2015-day01.txt");
+        String input = FileHelper.readFileToString("2015/2015-day01.txt");
         answer = findPositionForThreshold('(', ')', input, -1) + 1;
         System.out.println("The answer to the advent of code 2015 challenge day one puzzle two is: " + answer);
     }
 
     @Test
     public void dayTwoPuzzleOne() {
-        List<String> input = FileHelper.readFileToListOfString("2015-day02.txt");
+        List<String> input = FileHelper.readFileToListOfString("2015/2015-day02.txt");
         assert input != null;
         List<RectangularCuboid> rectangularCuboidList = transformInputToCuboidShapeList(input, "x");
         Map<Integer, List<BigDecimal>> surfacesMap = calculateRectangularCuboidSurfaces(rectangularCuboidList);
@@ -47,7 +47,7 @@ public class TestCaseAOC2015 {
 
     @Test
     public void dayTwoPuzzleTwo() {
-        List<String> input = FileHelper.readFileToListOfString("2015-day02.txt");
+        List<String> input = FileHelper.readFileToListOfString("2015/2015-day02.txt");
         assert input != null;
         List<RectangularCuboid> rectangularCuboidList = transformInputToCuboidShapeList(input, "x");
         List<BigDecimal> shortestDistanceAroundSides = calculateRectangularCuboidShortestDistanceAroundSides(rectangularCuboidList);
@@ -58,7 +58,7 @@ public class TestCaseAOC2015 {
 
     @Test
     public void dayThreePuzzleOne() {
-        String input = FileHelper.readFileToString("2015-day03.txt");
+        String input = FileHelper.readFileToString("2015/2015-day03.txt");
         List<String> coordinateList = CoordinateHelper.returnCoordinatesList(input, 0, 0);
         HashSet<String> coordinateListNoDuplicates = ListHelper.uniqueList(coordinateList);
         int answer = coordinateListNoDuplicates.size();
@@ -67,7 +67,7 @@ public class TestCaseAOC2015 {
 
     @Test
     public void dayThreePuzzleTwo() {
-        String input = FileHelper.readFileToString("2015-day03.txt");
+        String input = FileHelper.readFileToString("2015/2015-day03.txt");
         assert input != null;
         List<String> coordinateList = new ArrayList<>();
 
@@ -101,7 +101,7 @@ public class TestCaseAOC2015 {
 
     @Test
     public void dayFivePuzzleOne() {
-        List<String> inputList = FileHelper.readFileToListOfString("2015-day05.txt");
+        List<String> inputList = FileHelper.readFileToListOfString("2015/2015-day05.txt");
         assert inputList != null;
         List<String> forbiddenStringList = Arrays.asList("ab", "cd", "pq", "xy");
 
@@ -118,7 +118,7 @@ public class TestCaseAOC2015 {
 
     @Test
     public void dayFivePuzzleTwo() {
-        List<String> inputList = FileHelper.readFileToListOfString("2015-day05.txt");
+        List<String> inputList = FileHelper.readFileToListOfString("2015/2015-day05.txt");
         assert inputList != null;
         List<String> niceStringsPhaseOne = new ArrayList<>();
         List<String> niceStringsPhaseTwo = new ArrayList<>();
@@ -142,7 +142,7 @@ public class TestCaseAOC2015 {
 
     @Test
     public void daySixPuzzleOne() {
-        List<String> inputList = FileHelper.readFileToListOfString("2015-day06.txt");
+        List<String> inputList = FileHelper.readFileToListOfString("2015/2015-day06.txt");
         int[][] arrayOfLights = ArrayHelper.createTwoDimensionalArray(1000, 1000, 0);
 
 
