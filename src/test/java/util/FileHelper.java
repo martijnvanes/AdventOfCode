@@ -12,12 +12,12 @@ public class FileHelper {
     public static String readFileToString(String fileName) {
         Path path = Path.of("src/test/resources/" + fileName);
         try {
-                return Files.readString(path);
-            } catch (IOException e) {
-                log.error(e.getLocalizedMessage());
-            }
-            return null;
+            return Files.readString(path);
+        } catch (IOException e) {
+            log.error(e.getLocalizedMessage());
         }
+        return null;
+    }
 
     public static List<String> readFileToListOfString(String fileName) {
         Path path = Path.of("src/test/resources/" + fileName);
@@ -27,5 +27,13 @@ public class FileHelper {
             log.error(e.getLocalizedMessage());
         }
         return null;
+    }
+
+    public static String[] tradFileToArrayOfString(String filename, boolean removeSpace) {
+        String input = readFileToString(filename);
+        if (removeSpace) {
+            input = input.replaceAll("\\s", "");
+        }
+        return StringHelper.splitString(input, ",");
     }
 }
