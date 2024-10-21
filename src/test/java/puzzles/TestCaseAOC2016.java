@@ -5,6 +5,7 @@ import models.arrayInstruction.Position;
 import org.testng.annotations.Test;
 import util.CoordinateHelper;
 import util.FileHelper;
+import util.MdArrayHelper;
 import util.StringHelper;
 
 import java.util.ArrayList;
@@ -53,6 +54,33 @@ public class TestCaseAOC2016 {
     }
 
     public void dayTwoPuzzleOne() {
-        int answer;
+        List<String> inputStringList = FileHelper.readFileToListOfString("2016/day02-01.txt");
+        assert inputStringList != null;
+
+        String[][] keypad = {{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
+        int row = 1; // Start row
+        int rowMax = 2;
+        int column = 1; // Start column
+        int columnMax = 2;
+
+        String answer = MdArrayHelper.returnContentsOfField(keypad, row, rowMax, column, columnMax, inputStringList);
+
+        System.out.println(answer);
     }
+
+    public void dayTwoPuzzleTwo() {
+        List<String> inputStringList = FileHelper.readFileToListOfString("2016/day02-01.txt");
+        assert inputStringList != null;
+
+        String[][] keypad = {{"EDGE","EDGE","1","EDGE","EDGE"}, {"EDGE","2", "3", "4","EDGE"}, {"5", "6", "7", "8", "9"}, {"EDGE","A", "B", "C","EDGE"}, {"EDGE","EDGE","D","EDGE","EDGE"}};
+        int row = 2; // Start row
+        int rowMax = 4;
+        int column = 0; // Start column
+        int columnMax = 4;
+
+        String answer = MdArrayHelper.returnContentsOfField(keypad, row, rowMax, column, columnMax, inputStringList);
+
+        System.out.println(answer);
+    }
+
 }
