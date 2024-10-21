@@ -1,6 +1,7 @@
 package util;
 
 import models.shapes.RectangularCuboid;
+import models.shapes.Triangle;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -61,5 +62,32 @@ public class ShapeHelper {
             bows.add(rectangularCuboid.getDimensionsMultiplied());
         }
         return bows;
+    }
+
+    public static Triangle stringToTriangle(String input) {
+        Triangle triangle = new Triangle();
+        triangle.setSideA(Integer.parseInt(input.substring(0, 5).replaceAll("\\s", "")));
+        triangle.setSideB(Integer.parseInt(input.substring(5, 10).replaceAll("\\s", "")));
+        triangle.setSideC(Integer.parseInt(input.substring(10, 15).replaceAll("\\s", "")));
+        return triangle;
+    }
+
+    public static boolean triangleIsValid(Triangle triangle) {
+        /**
+         * A triangle is considered valid when there is no combination where the sum of 2 sides is smaller than the third side
+         * @param triangle object with the length of each side
+         * @return the answer that the triangle is valid (true) or the triangle is invalid (false)
+         **/
+        int sum = 0;
+        if ((triangle.getSideA() + triangle.getSideB()) <= triangle.getSideC()) {
+            sum++;
+        }
+        if ((triangle.getSideA() + triangle.getSideC()) <= triangle.getSideB()) {
+            sum++;
+        }
+        if ((triangle.getSideB() + triangle.getSideC()) <= triangle.getSideA()) {
+            sum++;
+        }
+        return sum == 0;
     }
 }

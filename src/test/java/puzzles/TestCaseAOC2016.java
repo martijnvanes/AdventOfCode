@@ -2,14 +2,14 @@ package puzzles;
 
 import enums.Heading;
 import models.arrayInstruction.Position;
+import models.shapes.Triangle;
 import org.testng.annotations.Test;
-import util.CoordinateHelper;
-import util.FileHelper;
-import util.MdArrayHelper;
-import util.StringHelper;
+import util.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static util.ShapeHelper.triangleIsValid;
 
 @Test
 public class TestCaseAOC2016 {
@@ -72,7 +72,7 @@ public class TestCaseAOC2016 {
         List<String> inputStringList = FileHelper.readFileToListOfString("2016/day02-01.txt");
         assert inputStringList != null;
 
-        String[][] keypad = {{"EDGE","EDGE","1","EDGE","EDGE"}, {"EDGE","2", "3", "4","EDGE"}, {"5", "6", "7", "8", "9"}, {"EDGE","A", "B", "C","EDGE"}, {"EDGE","EDGE","D","EDGE","EDGE"}};
+        String[][] keypad = {{"EDGE", "EDGE", "1", "EDGE", "EDGE"}, {"EDGE", "2", "3", "4", "EDGE"}, {"5", "6", "7", "8", "9"}, {"EDGE", "A", "B", "C", "EDGE"}, {"EDGE", "EDGE", "D", "EDGE", "EDGE"}};
         int row = 2; // Start row
         int rowMax = 4;
         int column = 0; // Start column
@@ -83,4 +83,21 @@ public class TestCaseAOC2016 {
         System.out.println(answer);
     }
 
+    public void dayThreePuzzleOne() {
+        List<String> inputStringList = FileHelper.readFileToListOfString("2016/day03-01.txt");
+        assert inputStringList != null;
+        int answer = 0;
+
+        List<Triangle> triangleList = new ArrayList<>();
+        for (String input : inputStringList) {
+            triangleList.add(ShapeHelper.stringToTriangle(input));
+        }
+        for (Triangle triangle : triangleList) {
+            if (triangleIsValid(triangle)){
+                answer++;
+            }
+        }
+
+        System.out.println("There are " + answer + " possible triangles.");
+    }
 }
