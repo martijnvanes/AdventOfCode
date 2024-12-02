@@ -9,13 +9,14 @@ import util.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static util.FileHelper.readFileTo2DArrayOfString;
 import static util.ShapeHelper.triangleIsValid;
 
 @Test
 public class TestCaseAOC2016 {
     public void dayOnePuzzleOne() {
         int answer;
-        String[] inputArray = FileHelper.tradFileToArrayOfString("2016/day01-01.txt", true);
+        String[] inputArray = FileHelper.readFileToArrayOfString("2016/day01-01.txt", true);
 
         Position position = new Position();
         position.startPosition(0, 0, Heading.NORTH);
@@ -30,7 +31,7 @@ public class TestCaseAOC2016 {
 
     public void dayOnePuzzleTwo() {
         int answer;
-        String[] inputArray = FileHelper.tradFileToArrayOfString("2016/day01-01.txt", true);
+        String[] inputArray = FileHelper.readFileToArrayOfString("2016/day01-01.txt", true);
 
         List<Position> positionList = new ArrayList<>();
         Position firstPosition = new Position();
@@ -86,12 +87,29 @@ public class TestCaseAOC2016 {
     public void dayThreePuzzleOne() {
         List<String> inputStringList = FileHelper.readFileToListOfString("2016/day03-01.txt");
         assert inputStringList != null;
+
         int answer = 0;
 
         List<Triangle> triangleList = new ArrayList<>();
         for (String input : inputStringList) {
             triangleList.add(ShapeHelper.stringToTriangle(input));
         }
+        for (Triangle triangle : triangleList) {
+            if (triangleIsValid(triangle)){
+                answer++;
+            }
+        }
+
+        System.out.println("There are " + answer + " possible triangles.");
+    }
+
+    public void dayThreePuzzleTwo() {
+        int answer = 0;
+
+        String[][] inputStringArray = readFileTo2DArrayOfString("2016/day03-01.txt", 1911,3);
+        List<Triangle> triangleList = new ArrayList<>();
+        triangleList.addAll(ShapeHelper.verticalArrayToTriangle(inputStringArray));
+
         for (Triangle triangle : triangleList) {
             if (triangleIsValid(triangle)){
                 answer++;

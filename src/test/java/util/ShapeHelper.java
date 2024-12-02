@@ -72,6 +72,20 @@ public class ShapeHelper {
         return triangle;
     }
 
+    public static List<Triangle> verticalArrayToTriangle(String[][] input) {
+        List<Triangle> triangleList = new ArrayList<>();
+        for (int j = 0; j < 3; j++) {
+            for (int i = 0; i < input.length; i = i+3) {
+                Triangle triangle = new Triangle();
+                triangle.setSideA(Integer.parseInt(input[i][j]));
+                triangle.setSideB(Integer.parseInt(input[i+1][j]));
+                triangle.setSideC(Integer.parseInt(input[i+2][j]));
+                triangleList.add(triangle);
+            }
+        }
+        return triangleList;
+    }
+
     public static boolean triangleIsValid(Triangle triangle) {
         /**
          * A triangle is considered valid when there is no combination where the sum of 2 sides is smaller than the third side

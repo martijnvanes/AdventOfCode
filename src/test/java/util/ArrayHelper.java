@@ -10,4 +10,14 @@ public class ArrayHelper {
         }
         return twoDimensionalArray;
     }
+
+    public static int countIntOccurencesInIntArray(int value, int[] intArray) {
+        int occurences = 0;
+        for (int arrayValue : intArray) {
+            if (value == arrayValue) {
+                occurences++;
+            }
+        }
+        return occurences;
+    }
 }
