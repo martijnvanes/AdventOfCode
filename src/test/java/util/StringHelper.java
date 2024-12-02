@@ -54,6 +54,17 @@ public class StringHelper {
         return inputString.split(splitter);
     }
 
+    public static int[] splitStringToIntArray(String inputString, String splitter) {
+        String[] stringArray = inputString.split(splitter);
+        int[] intArray = new int[stringArray.length];
+        int i = 0;
+        while (i < stringArray.length) {
+            intArray[i] = Integer.parseInt(stringArray[i]);
+            i++;
+        }
+        return intArray;
+    }
+
     public static String returnPartOfStringBasedOnIndex(String inputString, int index, int increaseIndex) {
         int length = inputString.length() - 1;
         StringBuilder outputString = new StringBuilder();

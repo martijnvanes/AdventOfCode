@@ -5,8 +5,10 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static util.ArrayHelper.countIntOccurencesInIntArray;
+import static util.ArrayHelper.*;
 import static util.FileHelper.*;
+import static util.StringHelper.splitString;
+import static util.StringHelper.splitStringToIntArray;
 
 @Test
 public class TestCaseAOC2024 {
@@ -19,8 +21,8 @@ public class TestCaseAOC2024 {
         int i = 0;
 
         for (String input : inputList) {
-            col1[i] = Integer.parseInt(input.substring(0,5));
-            col2[i] = Integer.parseInt(input.substring(8,13));
+            col1[i] = Integer.parseInt(input.substring(0, 5));
+            col2[i] = Integer.parseInt(input.substring(8, 13));
             i++;
         }
         Arrays.sort(col1);
@@ -44,8 +46,8 @@ public class TestCaseAOC2024 {
         int i = 0;
 
         for (String input : inputList) {
-            col1[i] = Integer.parseInt(input.substring(0,5));
-            col2[i] = Integer.parseInt(input.substring(8,13));
+            col1[i] = Integer.parseInt(input.substring(0, 5));
+            col2[i] = Integer.parseInt(input.substring(8, 13));
             i++;
         }
 
@@ -57,6 +59,52 @@ public class TestCaseAOC2024 {
             i++;
         }
         System.out.println("The similarity score is " + similarityScoreTotal);
+    }
+
+    public void dayTwoPuzzleOne() {
+        int numberOfSafeReports = 0;
+        List<String> reports = readFileToListOfString("2024/day02.txt");
+        assert reports != null;
+        for (String report : reports) {
+            int[] levels = splitStringToIntArray(report, " ");
+            if (valuesAscendingWitMaxDifference(levels, 3)) {
+                numberOfSafeReports++;
+            }
+            if (valuesDescendingWitMaxDifference(levels, 3)) {
+                numberOfSafeReports++;
+            }
+        }
+        System.out.println("There are " + numberOfSafeReports + " safe reports.");
+    }
+
+    public void dayTwoPuzzleTwo() {
+        int numberOfSafeReports = 0;
+        List<String> reports = readFileToListOfString("2024/day02.txt");
+        assert reports != null;
+        for (String report : reports) {
+            int[] levels = splitStringToIntArray(report, " ");
+
+            int indexToRemove;
+            if (levels[0] < levels[levels.length - 1]) {
+                indexToRemove = valuesAscendingWitMaxDifferenceRemoveOne(levels, 3);
+            } else {
+                indexToRemove = valuesDescendingWitMaxDifferenceRemoveOne(levels, 3);
+            }
+
+            int[] levelsCleaned;
+            if (indexToRemove != 999) {
+                levelsCleaned = removeIndexFromIntArray(levels, indexToRemove);
+            } else {
+                levelsCleaned = levels;
+            }
+            if (valuesAscendingWitMaxDifference(levelsCleaned, 3)) {
+                numberOfSafeReports++;
+            }
+            if (valuesDescendingWitMaxDifference(levelsCleaned, 3)) {
+                numberOfSafeReports++;
+            }
+        }
+        System.out.println("There are " + numberOfSafeReports + " safe reports.");
     }
 }
 

@@ -20,4 +20,107 @@ public class ArrayHelper {
         }
         return occurences;
     }
+
+    public static boolean valuesAscendingWitMaxDifference(int[] values, int maxDifference) {
+        int i = 0;
+        boolean answer = false;
+        int valuesAscending = 0; // counter increases when values are NOT ascending
+        while (i < values.length) {
+            if (i > 0) {
+                int previousValue = values[i - 1];
+                int value = values[i];
+                if (previousValue >= value) {
+                    valuesAscending++;
+                } else if ((value - previousValue) > maxDifference) {
+                    valuesAscending++;
+                }
+            }
+            i++;
+        }
+        if (valuesAscending == 0) {
+            answer = true;
+        }
+        return answer;
+    }
+
+    public static boolean valuesDescendingWitMaxDifference(int[] values, int maxDifference) {
+        int i = 0;
+        boolean answer = false;
+        int valuesAscending = 0; // counter increases when values are NOT descending
+        while (i < values.length) {
+            if (i > 0) {
+                int previousValue = values[i - 1];
+                int value = values[i];
+                if (previousValue <= value) {
+                    valuesAscending++;
+                } else if ((previousValue - value) > maxDifference) {
+                    valuesAscending++;
+                }
+            }
+            i++;
+        }
+        if (valuesAscending == 0) {
+            answer = true;
+        }
+        return answer;
+    }
+
+    public static int valuesAscendingWitMaxDifferenceRemoveOne(int[] values, int maxDifference) {
+        int i = 0;
+        int index = 999;
+        if (values[0] >= values[1]) {
+            index = i;
+            return index;
+        } else {
+            while (i < values.length) {
+                if (i > 0) {
+                    int previousValue = values[i - 1];
+                    int value = values[i];
+                    if (previousValue >= value) {
+                        index = i;
+                    } else if ((value - previousValue) > maxDifference) {
+                        index = i;
+                    }
+                }
+                i++;
+            }
+        }
+        return index;
+    }
+
+    public static int valuesDescendingWitMaxDifferenceRemoveOne(int[] values, int maxDifference) {
+        int i = 0;
+        int index = 999;
+        if (values[0] <= values[1]) {
+            index = i;
+            return index;
+        }
+        while (i < values.length) {
+            if (i > 0) {
+                int previousValue = values[i - 1];
+                int value = values[i];
+                if (previousValue <= value) {
+                    index = i;
+                } else if ((previousValue - value) > maxDifference) {
+                    index = i;
+                }
+            }
+            i++;
+        }
+        return index;
+    }
+
+    public static int[] removeIndexFromIntArray(int[] intArray, int indexToRemove) {
+        int[] intArrayCleaned = new int[(intArray.length) - 1];
+        int i = 0;
+        int j = 0;
+        while (i < intArray.length) {
+            if (i != indexToRemove) {
+                intArrayCleaned[j] = intArray[i];
+                j++;
+            }
+            i++;
+        }
+        return intArrayCleaned;
+    }
 }
