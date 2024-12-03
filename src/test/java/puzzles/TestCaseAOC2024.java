@@ -2,13 +2,13 @@ package puzzles;
 
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static util.ArrayHelper.*;
 import static util.FileHelper.*;
-import static util.StringHelper.splitString;
-import static util.StringHelper.splitStringToIntArray;
+import static util.StringHelper.*;
 
 @Test
 public class TestCaseAOC2024 {
@@ -106,5 +106,23 @@ public class TestCaseAOC2024 {
         }
         System.out.println("There are " + numberOfSafeReports + " safe reports.");
     }
+
+    public void dayThreePuzzleOne() {
+        String input = readFileToString("2024/day03.txt");
+        String regEx = "mul\\([0-9]{1,3},[0-9]{1,3}\\)";
+        List<String> realMulInstructions = returnListOfStringByRegEx(regEx, input);
+        int answer = 0;
+
+        for (String realMulInstruction : realMulInstructions) {
+            String formula = realMulInstruction.substring(4);
+            formula = formula.substring(0, formula.length() - 1);
+            String[] array = formula.split(",");
+            int a = Integer.parseInt(array[0]);
+            int b = Integer.parseInt(array[1]);
+            answer = answer + (a * b);
+        }
+        System.out.println("There answer is " + answer);
+    }
 }
 
+// mul(386,330)

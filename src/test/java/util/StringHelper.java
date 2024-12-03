@@ -6,6 +6,8 @@ import org.apache.maven.shared.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Slf4j
 public class StringHelper {
@@ -96,5 +98,15 @@ public class StringHelper {
             }
         }
         return false;
+    }
+
+    public static List<String> returnListOfStringByRegEx(String regEx, String input) {
+        Pattern pattern = Pattern.compile(regEx);
+        Matcher matcher = pattern.matcher((input));
+        List<String> output = new ArrayList<>();
+        while ((matcher.find())) {
+            output.add(matcher.group());
+        }
+        return output;
     }
 }
