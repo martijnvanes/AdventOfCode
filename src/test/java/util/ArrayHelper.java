@@ -123,4 +123,128 @@ public class ArrayHelper {
         }
         return intArrayCleaned;
     }
+
+    public static boolean horizontalSearchL2R(String[][] input, int i, int j, int cols, int rows) {
+        if ((j + 3) >= cols) {
+            return false;
+        }
+        if (input[i][j + 1].equals("M")) {
+            if (input[i][j + 2].equals("A")) {
+                return input[i][j + 3].equals("S");
+            }
+        }
+        return false;
+    }
+
+    public static boolean horizontalSearchR2L(String[][] input, int i, int j, int cols, int rows) {
+        if ((j - 3) < 0) {
+            return false;
+        }
+        if (input[i][j - 1].equals("M")) {
+            if (input[i][j - 2].equals("A")) {
+                return input[i][j - 3].equals("S");
+            }
+        }
+        return false;
+    }
+
+    public static boolean verticalSearchU2D(String[][] input, int i, int j, int cols, int rows) {
+        if ((i + 3) >= rows) {
+            return false;
+        }
+        if (input[i + 1][j].equals("M")) {
+            if (input[i + 2][j].equals("A")) {
+                return input[i + 3][j].equals("S");
+            }
+        }
+        return false;
+    }
+
+    public static boolean verticalSearchD2U(String[][] input, int i, int j, int cols, int rows) {
+        if ((i - 3) < 0) {
+            return false;
+        }
+        if (input[i - 1][j].equals("M")) {
+            if (input[i - 2][j].equals("A")) {
+                return input[i - 3][j].equals("S");
+            }
+        }
+        return false;
+    }
+
+    public static boolean diagonalSearchL2RD(String[][] input, int i, int j, int cols, int rows) {
+        if (((j + 3) >= cols) || ((i + 3) >= rows)) {
+            return false;
+        }
+        if (input[i + 1][j + 1].equals("M")) {
+            if (input[i + 2][j + 2].equals("A")) {
+                return input[i + 3][j + 3].equals("S");
+            }
+        }
+        return false;
+    }
+
+    public static boolean diagonalSearchL2RU(String[][] input, int i, int j, int cols, int rows) {
+        if (((j + 3) >= cols) || ((i - 3) < 0)) {
+            return false;
+        }
+        if (input[i - 1][j + 1].equals("M")) {
+            if (input[i - 2][j + 2].equals("A")) {
+                return input[i - 3][j + 3].equals("S");
+            }
+        }
+        return false;
+    }
+
+    public static boolean diagonalSearchR2LU(String[][] input, int i, int j, int cols, int rows) {
+        if (((j - 3) < 0) || ((i - 3) < 0)) {
+            return false;
+        }
+        if (input[i - 1][j - 1].equals("M")) {
+            if (input[i - 2][j - 2].equals("A")) {
+                return input[i - 3][j - 3].equals("S");
+            }
+        }
+        return false;
+    }
+
+    public static boolean diagonalSearchR2LD(String[][] input, int i, int j, int cols, int rows) {
+        if (((j - 3) < 0) || ((i + 3) >= rows)) {
+            return false;
+        }
+        if (input[i + 1][j - 1].equals("M")) {
+            if (input[i + 2][j - 2].equals("A")) {
+                return input[i + 3][j - 3].equals("S");
+            }
+        }
+        return false;
+    }
+
+    public static boolean findXshapeA(String[][] input, int i, int j, int cols, int rows) {
+        if (((j - 1) < 0) || ((j + 1) >= cols) || ((i - 1) < 0) || ((i + 1) >= rows)) {
+            return false;
+        }
+        return (input[i + 1][j - 1].equals("M")) && ((input[i + 1][j + 1].equals("M"))) && (input[i - 1][j - 1].equals("S")) && ((input[i - 1][j + 1].equals("S")));
+    }
+
+    public static boolean findXshapeB(String[][] input, int i, int j, int cols, int rows) {
+        if (((j - 1) < 0) || ((j + 1) >= cols) || ((i - 1) < 0) || ((i + 1) >= rows)) {
+            return false;
+        }
+        return (input[i + 1][j - 1].equals("S")) && ((input[i + 1][j + 1].equals("S"))) && (input[i - 1][j - 1].equals("M")) && ((input[i - 1][j + 1].equals("M")));
+    }
+
+    public static boolean findXshapeC(String[][] input, int i, int j, int cols, int rows) {
+        if (((j - 1) < 0) || ((j + 1) >= cols) || ((i - 1) < 0) || ((i + 1) >= rows)) {
+            return false;
+        }
+        return (input[i + 1][j - 1].equals("M")) && ((input[i + 1][j + 1].equals("S"))) && (input[i - 1][j - 1].equals("M")) && ((input[i - 1][j + 1].equals("S")));
+    }
+
+    public static boolean findXshapeD(String[][] input, int i, int j, int cols, int rows) {
+        if (((j - 1) < 0) || ((j + 1) >= cols) || ((i - 1) < 0) || ((i + 1) >= rows)) {
+            return false;
+        }
+        return (input[i + 1][j - 1].equals("S")) && ((input[i + 1][j + 1].equals("M"))) && (input[i - 1][j - 1].equals("S")) && ((input[i - 1][j + 1].equals("M")));
+    }
 }

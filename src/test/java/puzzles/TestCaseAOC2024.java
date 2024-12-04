@@ -2,7 +2,6 @@ package puzzles;
 
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -123,6 +122,80 @@ public class TestCaseAOC2024 {
         }
         System.out.println("There answer is " + answer);
     }
-}
 
-// mul(386,330)
+    public void dayFourPuzzleOne() {
+        int counter = 0;
+        int rows = 140;
+        int cols = 140;
+        String[][] input = readFileTo2DArrayOfString("2024/day04.txt", rows, cols, "");
+        assert input != null;
+        int i = 0;
+        while (i < rows) {
+            int j = 0;
+            while (j < cols) {
+                if (input[i][j].equals("X")) {
+                    if (horizontalSearchL2R(input, i, j, cols, rows)) {
+                        counter++;
+                    }
+                    if (horizontalSearchR2L(input, i, j, cols, rows)) {
+                        counter++;
+                    }
+                    if (verticalSearchU2D(input, i, j, cols, rows)) {
+                        counter++;
+                    }
+                    if (verticalSearchD2U(input, i, j, cols, rows)) {
+                        counter++;
+                    }
+                    if (diagonalSearchL2RD(input, i, j, cols, rows)) {
+                        counter++;
+                    }
+                    if (diagonalSearchL2RU(input, i, j, cols, rows)) {
+                        counter++;
+                    }
+                    if (diagonalSearchR2LU(input, i, j, cols, rows)) {
+                        counter++;
+                    }
+                    if (diagonalSearchR2LD(input, i, j, cols, rows)) {
+                        counter++;
+                    }
+                }
+                j++;
+            }
+            i++;
+        }
+        System.out.println("The answer is: " + counter);
+    }
+
+    public void dayFourPuzzleTwo() {
+        int counter = 0;
+        int rows = 140;
+        int cols = 140;
+        String[][] input = readFileTo2DArrayOfString("2024/day04.txt", rows, cols, "");
+        assert input != null;
+        int i = 0;
+
+        while (i < rows) {
+            int j = 0;
+            while (j < cols) {
+                if (input[i][j].equals("A")) {
+                    if (findXshapeA(input, i, j, cols, rows)) {
+                        counter++;
+                    }
+                    if (findXshapeB(input, i, j, cols, rows)) {
+                        counter++;
+                    }
+                    if (findXshapeC(input, i, j, cols, rows)) {
+                        counter++;
+                    }
+                    if (findXshapeD(input, i, j, cols, rows)) {
+                        counter++;
+                    }
+                }
+                j++;
+            }
+            i++;
+        }
+
+        System.out.println("The answer is: " + counter);
+    }
+}

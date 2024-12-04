@@ -40,13 +40,13 @@ public class FileHelper {
         return StringHelper.splitString(input, ",");
     }
 
-    public static String[][] readFileTo2DArrayOfString(String filename, int rows, int cols) {
+    public static String[][] readFileTo2DArrayOfString(String filename, int rows, int cols, String spliter) {
         try {
             Scanner scanner = new Scanner(new BufferedReader(new FileReader("src/test/resources/" + filename)));
             String[][] myArray = new String[rows][cols];
             while (scanner.hasNextLine()) {
                 for (int i = 0; i < myArray.length; i++) {
-                    String[] lineArray = scanner.nextLine().trim().replaceAll(" {1,}", ",").split(",");
+                    String[] lineArray = scanner.nextLine().trim().replaceAll(" {1,}", ",").split(spliter);
                     for (int j = 0; j < lineArray.length; j++) {
                         myArray[i][j] = lineArray[j];
                     }

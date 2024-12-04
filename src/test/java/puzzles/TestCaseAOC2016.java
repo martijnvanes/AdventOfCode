@@ -106,7 +106,7 @@ public class TestCaseAOC2016 {
     public void dayThreePuzzleTwo() {
         int answer = 0;
 
-        String[][] inputStringArray = readFileTo2DArrayOfString("2016/day03-01.txt", 1911,3);
+        String[][] inputStringArray = readFileTo2DArrayOfString("2016/day03-01.txt", 1911,3, ",");
         List<Triangle> triangleList = new ArrayList<>();
         triangleList.addAll(ShapeHelper.verticalArrayToTriangle(inputStringArray));
 
