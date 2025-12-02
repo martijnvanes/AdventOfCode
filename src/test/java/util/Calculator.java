@@ -29,4 +29,14 @@ public class Calculator {
         }
         return calculatedValue;
     }
+
+    public int dialLeftOrRightPartTwo(int startValue, int delta, String direction) {
+        int calculatedValue;
+        if (direction.equals("left")) {
+            calculatedValue = startValue - delta;
+        } else {
+            calculatedValue = startValue + delta;
+        }
+        return calculatedValue;
+    }
 }
