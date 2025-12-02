@@ -27,7 +27,7 @@ public class TestCaseAOC2025 {
                 deltaInt = Integer.parseInt(input.substring(1));
             }
 
-            int calculatedValue = Calculator.calc(lowerLimit, upperLimit, startValue, deltaInt, direction);
+            int calculatedValue = Calculator.dialLeftOrRight(lowerLimit, upperLimit, startValue, deltaInt, direction);
             startValue = calculatedValue;
             if (calculatedValue == 0 || calculatedValue == 100) {
                 answer++;

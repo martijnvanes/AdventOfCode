@@ -15,7 +15,7 @@ public class Calculator {
         return answer;
     }
 
-    public int calc(int lowerLimit, int upperLimit, int startValue, int delta, String direction) {
+    public int dialLeftOrRight(int lowerLimit, int upperLimit, int startValue, int delta, String direction) {
         int calculatedValue;
         if (direction.equals("left")) {
             calculatedValue = startValue - delta;
