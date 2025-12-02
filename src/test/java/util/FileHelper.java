@@ -1,5 +1,6 @@
 package util;
 
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -9,8 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+@UtilityClass
 public class FileHelper {
-    public static String readFileToString(String fileName) {
+    public String readFileToString(String fileName) {
         Path path = Path.of("src/test/resources/" + fileName);
         try {
                 return Files.readString(path);
@@ -20,10 +22,21 @@ public class FileHelper {
             return null;
         }
 
-    public static List<String> readFileToListOfString(String fileName) {
+    public List<String> readFileToListOfString(String fileName) {
         Path path = Path.of("src/test/resources/" + fileName);
         try {
             return Files.readAllLines(path);
+        } catch (IOException e) {
+            log.error(e.getLocalizedMessage());
+        }
+        return null;
+    }
+
+    public List<String> readFileToListOfStringWithSeparator(String fileName, String separator) {
+        Path path = Path.of("src/test/resources/" + fileName);
+        try {
+            String inputString = Files.readString(path);
+            return List.of(inputString.split(separator));
         } catch (IOException e) {
             log.error(e.getLocalizedMessage());
         }
