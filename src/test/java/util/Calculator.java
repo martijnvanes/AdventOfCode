@@ -1,6 +1,7 @@
 package util;
 
 import lombok.experimental.UtilityClass;
+import models.numbers.PositionValue;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -37,5 +38,20 @@ public class Calculator {
             calculatedValue = startValue + delta;
         }
         return calculatedValue;
+    }
+
+    public static PositionValue findHighestValueInRange(String inputRange) {
+        PositionValue positionValue = new PositionValue();
+        int highestJoltageValue = 0;
+        int highestJoltagePosition = 0;
+        for (int i = inputRange.length(); i > 0; i--) {
+            if ((int) inputRange.charAt(i - 1) - (int) '0' >= highestJoltageValue) {
+                highestJoltageValue = ((int) inputRange.charAt(i - 1) - (int) '0');
+                highestJoltagePosition = i;
+            }
+        }
+        positionValue.setPosition(highestJoltagePosition);
+        positionValue.setValue(String.valueOf(highestJoltageValue));
+        return positionValue;
     }
 }
