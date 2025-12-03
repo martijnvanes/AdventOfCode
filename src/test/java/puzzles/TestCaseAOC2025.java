@@ -124,4 +124,33 @@ public class TestCaseAOC2025 {
         }
         System.out.println("The answer to the advent of code 2025 challenge day two puzzle two is: " + answer);
     }
+
+    @Test
+    public void dayThreePuzzleOne() {
+        int answer = 0;
+        List<String> inputList = FileHelper.readFileToListOfString("2025-day03-input.txt");
+        for (String input : inputList) {
+            int highestJoltage1Value = 0;
+            int highestJoltage2Value = 0;
+            int highestJoltage1Position = 0;
+            int highestJoltage2Position = 0;
+            for (int i = input.length(); i > 0; i--) {
+                if (i != input.length() && (int) input.charAt(i - 1) - (int) '0' >= highestJoltage1Value) {
+                    highestJoltage1Value = ((int) input.charAt(i - 1) - (int) '0');
+                    highestJoltage1Position = i;
+                }
+            }
+            for (int j = input.length(); j > highestJoltage1Position; j--) {
+                if ((int) input.charAt(j - 1) - (int) '0' > highestJoltage2Value) {
+                    highestJoltage2Value = ((int) input.charAt(j - 1) - (int) '0');
+                    highestJoltage2Position = j;
+                }
+            }
+            System.out.println("Highest Joltage 1 = " + highestJoltage1Value + " on position " + highestJoltage1Position);
+            System.out.println("Highest Joltage 2 = " + highestJoltage2Value + " on position " + highestJoltage2Position);
+            answer = answer + Integer.parseInt(String.valueOf(highestJoltage1Value) + String.valueOf(highestJoltage2Value));
+
+        }
+        System.out.println("The answer to the advent of code 2025 challenge day three puzzle one is: " + answer);
+    }
 }

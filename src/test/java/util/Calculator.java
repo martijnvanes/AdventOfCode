@@ -5,9 +5,8 @@ import lombok.experimental.UtilityClass;
 import java.math.BigDecimal;
 import java.util.List;
 
-@UtilityClass
 public class Calculator {
-    public BigDecimal sumOfBigDecimalInList(List<BigDecimal> bigDecimalList) {
+    public static BigDecimal sumOfBigDecimalInList(List<BigDecimal> bigDecimalList) {
         BigDecimal answer = BigDecimal.ZERO;
         for (BigDecimal bigDecimal : bigDecimalList) {
             answer = answer.add(bigDecimal);
@@ -15,7 +14,7 @@ public class Calculator {
         return answer;
     }
 
-    public int dialLeftOrRight(int lowerLimit, int upperLimit, int startValue, int delta, String direction) {
+    public static int dialLeftOrRight(int lowerLimit, int upperLimit, int startValue, int delta, String direction) {
         int calculatedValue;
         if (direction.equals("left")) {
             calculatedValue = startValue - delta;
@@ -30,7 +29,7 @@ public class Calculator {
         return calculatedValue;
     }
 
-    public int dialLeftOrRightPartTwo(int startValue, int delta, String direction) {
+    public static int dialLeftOrRightPartTwo(int startValue, int delta, String direction) {
         int calculatedValue;
         if (direction.equals("left")) {
             calculatedValue = startValue - delta;
