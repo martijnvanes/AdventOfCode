@@ -1,5 +1,7 @@
 package puzzles;
 
+import models.numbers.PositionValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import util.Calculator;
 import util.FileHelper;
@@ -153,4 +155,33 @@ public class TestCaseAOC2025 {
         }
         System.out.println("The answer to the advent of code 2025 challenge day three puzzle one is: " + answer);
     }
+
+    @Test
+    public void dayThreePuzzleTwo() {
+        long answer = 0;
+        List<String> inputList = FileHelper.readFileToListOfString("2025-day03-input.txt");
+        int iterations = 12;
+        for (String input : inputList) {
+            int leftStopper = 0;
+            StringBuilder jolt = new StringBuilder();
+            for (int i = iterations; i > 0; i--) {
+                int rightStopper = input.length() - i + 1;
+                String stringToAnalyse = input.substring(leftStopper, rightStopper);
+                PositionValue positionValue = Calculator.findHighestValueInRange(stringToAnalyse);
+                leftStopper = leftStopper + positionValue.getPosition();
+                jolt.append(positionValue.getValue());
+            }
+            answer = answer + Long.parseLong(jolt.toString());
+        }
+        System.out.println("The answer to the advent of code 2025 challenge day three puzzle two is: " + answer);
+    }
 }
+
+// 818181911112111
+// 881911112111
+// 888911112111
+
+// 8181
+// 1818
+
+// 8
